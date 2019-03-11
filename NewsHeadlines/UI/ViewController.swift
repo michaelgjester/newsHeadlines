@@ -51,6 +51,9 @@ extension ViewController: UITableViewDataSource {
 
         cell.dateLabel.text = formatDateString(articleArray[indexPath.row].publishedAt) ?? ""
         cell.titleLabel.text = articleArray[indexPath.row].title ?? ""
+        if let imageThumbnailUrl = articleArray[indexPath.row].urlToImage {
+            cell.thumbnailImageView?.downloadImageFromNetworkAtURL(url: imageThumbnailUrl)
+        }
         
         return cell
     }

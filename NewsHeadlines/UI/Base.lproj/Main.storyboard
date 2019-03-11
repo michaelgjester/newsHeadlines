@@ -30,16 +30,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zEO-fl-ROu">
-                                                    <rect key="frame" x="15" y="10" width="345" height="60"/>
+                                                    <rect key="frame" x="15" y="10.5" width="345" height="67.5"/>
                                                     <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fpu-B4-t12">
+                                                            <rect key="frame" x="10" y="5" width="80" height="80"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="80" id="2lQ-KJ-py6"/>
+                                                                <constraint firstAttribute="width" constant="80" id="D4H-OY-noH"/>
+                                                            </constraints>
+                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71u-I9-kuv">
-                                                            <rect key="frame" x="5" y="10" width="335" height="17"/>
+                                                            <rect key="frame" x="100" y="10" width="235" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cu3-nq-Iug">
-                                                            <rect key="frame" x="5" y="37" width="335" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cu3-nq-Iug">
+                                                            <rect key="frame" x="100" y="37" width="235" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -47,11 +54,14 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="71u-I9-kuv" firstAttribute="leading" secondItem="zEO-fl-ROu" secondAttribute="leading" constant="5" id="0UF-4f-UGh"/>
-                                                        <constraint firstAttribute="trailing" secondItem="71u-I9-kuv" secondAttribute="trailing" constant="5" id="0d0-bj-Uit"/>
+                                                        <constraint firstAttribute="trailing" secondItem="71u-I9-kuv" secondAttribute="trailing" constant="10" id="0d0-bj-Uit"/>
                                                         <constraint firstItem="Cu3-nq-Iug" firstAttribute="leading" secondItem="71u-I9-kuv" secondAttribute="leading" id="14I-no-AHq"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Cu3-nq-Iug" secondAttribute="bottom" constant="2.5" id="EcE-UX-q9D"/>
+                                                        <constraint firstItem="Fpu-B4-t12" firstAttribute="leading" secondItem="zEO-fl-ROu" secondAttribute="leading" constant="10" id="56v-hg-Ol7"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Cu3-nq-Iug" secondAttribute="bottom" constant="10" id="EcE-UX-q9D"/>
                                                         <constraint firstItem="Cu3-nq-Iug" firstAttribute="top" secondItem="71u-I9-kuv" secondAttribute="bottom" constant="10" id="Fu0-bG-8pw"/>
+                                                        <constraint firstItem="Fpu-B4-t12" firstAttribute="top" secondItem="zEO-fl-ROu" secondAttribute="top" constant="5" id="Qfw-yt-24K"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Fpu-B4-t12" secondAttribute="bottom" constant="5" id="ZQx-Nc-GFt"/>
+                                                        <constraint firstItem="71u-I9-kuv" firstAttribute="leading" secondItem="Fpu-B4-t12" secondAttribute="trailing" constant="10" id="kT5-Oy-Ybp"/>
                                                         <constraint firstItem="Cu3-nq-Iug" firstAttribute="trailing" secondItem="71u-I9-kuv" secondAttribute="trailing" id="o2S-Uz-HYU"/>
                                                         <constraint firstItem="71u-I9-kuv" firstAttribute="top" secondItem="zEO-fl-ROu" secondAttribute="top" constant="10" id="tfV-cu-lq1"/>
                                                     </constraints>
@@ -61,13 +71,13 @@
                                                 <constraint firstAttribute="trailing" secondItem="zEO-fl-ROu" secondAttribute="trailing" constant="15" id="CsW-lP-ILu"/>
                                                 <constraint firstItem="zEO-fl-ROu" firstAttribute="top" secondItem="DFW-Lk-1n7" secondAttribute="top" constant="10" id="L4m-nc-tpU"/>
                                                 <constraint firstItem="zEO-fl-ROu" firstAttribute="leading" secondItem="DFW-Lk-1n7" secondAttribute="leading" constant="15" id="LYE-fA-PR2"/>
-                                                <constraint firstItem="71u-I9-kuv" firstAttribute="leading" secondItem="DFW-Lk-1n7" secondAttribute="leading" constant="20" id="Oge-z2-L2F"/>
                                                 <constraint firstAttribute="bottom" secondItem="zEO-fl-ROu" secondAttribute="bottom" constant="10" id="de0-F8-NQO"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="71u-I9-kuv" id="3pc-34-zWC"/>
+                                            <outlet property="thumbnailImageView" destination="Fpu-B4-t12" id="cz1-Jd-fcq"/>
                                             <outlet property="titleLabel" destination="Cu3-nq-Iug" id="KXK-6e-1If"/>
                                         </connections>
                                     </tableViewCell>

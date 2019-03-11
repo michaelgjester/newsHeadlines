@@ -49,9 +49,26 @@ extension ViewController: UITableViewDataSource {
         
         let cell = articlesTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! ArticleTableViewCell
 
-        cell.dateLabel.text = articleArray[indexPath.row].publishedAt ?? ""
+        cell.dateLabel.text = formatDateString(articleArray[indexPath.row].publishedAt) ?? ""
         cell.titleLabel.text = articleArray[indexPath.row].title ?? ""
         
         return cell
+    }
+    
+    private func formatDateString(_ inputDateString: String?) -> String? {
+        
+        var outputString: String? = nil
+        
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        let dateFormatterDisplay = DateFormatter()
+        dateFormatterDisplay.dateFormat = "MMM dd, yyyy"
+        
+        if let date = dateFormatterGet.date(from: inputDateString ?? "") {
+            outputString = dateFormatterDisplay.string(from: date)
+        }
+        
+        return outputString
     }
 }

@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         articlesTableView.dataSource = self
-        //articlesTableView.delegate = self
+        articlesTableView.delegate = self
         
         performNetworkCall()
     }
@@ -73,5 +73,14 @@ extension ViewController: UITableViewDataSource {
         }
         
         return outputString
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //TODO - load a detail VC when tapping on a row
+        //for now just animate the selection action
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

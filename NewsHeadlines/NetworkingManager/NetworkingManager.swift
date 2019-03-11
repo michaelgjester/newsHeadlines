@@ -54,18 +54,19 @@ struct Article: Decodable {
 
 class NetworkingManager: NSObject {
     
-    static func loadEventsWithCompletion(completionHandler:@escaping ([Article]) -> Void) -> Void {
+    static func loadArticlesWithCompletion(completionHandler:@escaping ([Article]) -> Void) -> Void {
         
+        //TODO: later versions of the app could make some of these arguments
+        //(e.g. endpoint and country) as paramaters passed into the method
         let baseAddress = "https://newsapi.org/v2/"
-        let endpoint = "top-headlines"
+        let topHeadlinesEndpoint = "top-headlines"
         let country = "us"
         let apiKey = "575160f93e3b4f63a50a37ed5aff69a6"
         
-        //example format for fully formed request string:
-        //"https://newsapi.org/v2/top-headlines?country=us&apiKey=<apikey>"
-        let requestString:String = baseAddress + endpoint + "?country=" + country + "&apiKey=" + apiKey
-        
-        print("RequestString = \(requestString)")
+        let requestString = createRequestString(baseAddress: baseAddress,
+                                                endpoint: topHeadlinesEndpoint,
+                                                country: country,
+                                                apiKey: apiKey)
         
         guard let url = URL(string: requestString) else {
             print("Error: cannot create URL")
@@ -97,26 +98,23 @@ class NetworkingManager: NSObject {
             //check 3: response parameter is non-nil
             if response != nil {
                 do {
-                    
                     let normalResponse = try JSONDecoder().decode(NormalResponse.self, from: data)
-                    
-                    print("status = \(normalResponse.status)")
-                    print("count = \(normalResponse.totalResults)")
-                    for article in normalResponse.articles {
-                        print("*******")
-                        if let title = article.title {
-                            print("title = \(title)")
-                        }
-                    }
-                    
+                    completionHandler(normalResponse.articles)
                 } catch let error as NSError {
-                    
                     print("Error: \(error)")
                 }
             }
         }
         
         task.resume()
-
+    }
+    
+    private static func createRequestString(baseAddress: String, endpoint: String, country: String, apiKey: String) -> String {
+        
+        //example format for fully formed request string:
+        //"https://newsapi.org/v2/top-headlines?country=us&apiKey=<apikey>"
+        let requestString:String = baseAddress + endpoint + "?country=" + country + "&apiKey=" + apiKey
+        
+        return requestString
     }
 }

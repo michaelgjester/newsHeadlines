@@ -14,12 +14,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        NetworkingManager.loadEventsWithCompletion(completionHandler: {_ in
-            
-        })
-        
+        performNetworkCall()
     }
 
-
+    private func performNetworkCall() {
+        
+        let loadArticlesCompletionHandler:([Article]) -> Void = { (articleArray:[Article]) -> Void in
+            
+            for article in articleArray {
+                print("***************************************")
+                if let title = article.title {
+                    print("title = \(title)")
+                }
+            }
+            
+        }
+        
+        NetworkingManager.loadArticlesWithCompletion(completionHandler: loadArticlesCompletionHandler)
+    }
 }
 

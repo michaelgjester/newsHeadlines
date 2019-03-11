@@ -56,6 +56,7 @@
 		1D15AB962235D2CA004C94C7 /* NewsHeadlines */ = {
 			isa = PBXGroup;
 			children = (
+				1D15ABAC2235D789004C94C7 /* Model */,
 				1D15ABA92235D2EA004C94C7 /* NetworkingManager */,
 				1D15AB972235D2CA004C94C7 /* AppDelegate.swift */,
 				1D15AB992235D2CA004C94C7 /* ViewController.swift */,
@@ -73,6 +74,13 @@
 				1D15ABAA2235D30A004C94C7 /* NetworkingManager.swift */,
 			);
 			path = NetworkingManager;
+			sourceTree = "<group>";
+		};
+		1D15ABAC2235D789004C94C7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

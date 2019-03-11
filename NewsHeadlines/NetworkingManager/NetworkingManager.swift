@@ -8,11 +8,53 @@
 
 import Foundation
 
+struct NormalResponse: Decodable {
+    let status: String
+    let totalResults: Int
+    let articles: [Article]
+    
+    enum CodingKeys: String, CodingKey {
+        case status
+        case totalResults
+        case articles
+    }
+}
 
+struct Source: Decodable {
+    let id: String?
+    let name: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+    }
+}
+
+struct Article: Decodable {
+    let source: Source
+    let author: String?
+    let title: String?
+    let description: String?
+    let url: String?
+    let urlToImage: String?
+    let publishedAt: String?
+    let content: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case source
+        case author
+        case title
+        case description
+        case url
+        case urlToImage
+        case publishedAt
+        case content
+    }
+}
 
 class NetworkingManager: NSObject {
     
-    static func loadEventsWithCompletion(completionHandler:@escaping ([NSObject]) -> Void) -> Void {
+    static func loadEventsWithCompletion(completionHandler:@escaping ([Article]) -> Void) -> Void {
         
         let baseAddress = "https://newsapi.org/v2/"
         let endpoint = "top-headlines"
@@ -47,7 +89,7 @@ class NetworkingManager: NSObject {
             }
             
             //check 2: data is non-nil
-            guard data != nil else {
+            guard let data = data else {
                 print("Error: data is nil")
                 return
             }
@@ -56,14 +98,20 @@ class NetworkingManager: NSObject {
             if response != nil {
                 do {
                     
-                    //JSON response
-                    if let jsonDictionary = try JSONSerialization.jsonObject(with: data!, options: [])as? [String: AnyObject]{
-                        
-                        print("jsonDictionary = \(jsonDictionary)")
+                    let normalResponse = try JSONDecoder().decode(NormalResponse.self, from: data)
+                    
+                    print("status = \(normalResponse.status)")
+                    print("count = \(normalResponse.totalResults)")
+                    for article in normalResponse.articles {
+                        print("*******")
+                        if let title = article.title {
+                            print("title = \(title)")
+                        }
                     }
                     
                 } catch let error as NSError {
-                    print(error)
+                    
+                    print("Error: \(error)")
                 }
             }
         }

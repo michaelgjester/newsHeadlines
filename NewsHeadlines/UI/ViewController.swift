@@ -49,6 +49,7 @@ extension ViewController: UITableViewDataSource {
         
         let cell = articlesTableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! ArticleTableViewCell
 
+        cell.dateLabel.text = articleArray[indexPath.row].publishedAt ?? ""
         cell.titleLabel.text = articleArray[indexPath.row].title ?? ""
         
         return cell
